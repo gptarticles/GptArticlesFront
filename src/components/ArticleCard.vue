@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
-import type { ArticleSummary } from '@/dto/ArticleSummary'
+import type { ArticleSummary } from '@/dto/article/ArticleSummary'
 import { DateFormatUtil } from '@/util/DateFormatUtil'
 
 export default defineComponent({

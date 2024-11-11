@@ -2,7 +2,7 @@
 import { defineComponent, type PropType } from 'vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { ArticleService } from '@/service/ArticleService'
-import type { Article } from '@/dto/Article'
+import type { Article } from '@/dto/article/Article'
 import { DateFormatUtil } from '@/util/DateFormatUtil'
 
 export default defineComponent({

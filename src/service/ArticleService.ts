@@ -1,5 +1,5 @@
-import type { ArticleSummary } from '@/dto/ArticleSummary'
-import type { Article } from '@/dto/Article'
+import type { ArticleSummary } from '@/dto/article/ArticleSummary'
+import type { Article } from '@/dto/article/Article'
 
 const fakeContent = "Former Apple engineer Alex Ruber and former Twitter and Asana engineer Parth Chopra first" +
   " met on Y Combinator’s founder match platform, then met in person at a thrift store for shopping. They later went" +
@@ -23,6 +23,7 @@ export class ArticleService {
 
 
   public async getRecentArticleSummaries(page: number) : Promise<ArticleSummary[]> {
+    // TODO replace to real endpoint
     const generateArticle = (id: number) => ({
       id: id,
       title: "Encore is an AI-powered search engine for your thrifting needs",
@@ -40,6 +41,7 @@ export class ArticleService {
   }
 
   public async getArticle(id: number) : Promise<Article> {
+    // TODO replace to real endpoint
     return {
       id: id,
       title: "Encore is an AI-powered search engine for your thrifting needs",

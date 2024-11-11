@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { ArticleService } from '@/service/ArticleService'
-import type { ArticleSummary } from '@/dto/ArticleSummary'
+import type { ArticleSummary } from '@/dto/article/ArticleSummary'
 import ArticleCard from '@/components/ArticleCard.vue'
 
 

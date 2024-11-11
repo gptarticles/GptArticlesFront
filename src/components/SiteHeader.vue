@@ -2,7 +2,7 @@
 
 import { useUserStore } from '@/stores/UserStore'
 import { defineComponent } from 'vue'
-import AssuranceModal from '@/components/AssuranceModal.vue'
+import AssuranceModal from '@/components/modal/AssuranceModal.vue'
 export default defineComponent({
   components: { AssuranceModal },
 
@@ -20,6 +20,9 @@ export default defineComponent({
   },
 
   methods: {
+    isActiveRoute(routeName: string) {
+      return this.$router.currentRoute.value.name == routeName
+    },
     showLogoutModal() {
       this.logoutModalShowing = true
     },
@@ -45,10 +48,22 @@ export default defineComponent({
       <div v-if="isUserAuthenticated" class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <RouterLink :to="{name: 'my-articles'}" class="nav-link" href="#">My articles</RouterLink>
+            <RouterLink :to="{name: 'my-articles'}"
+                        class="nav-link"
+                        :class="{'active': isActiveRoute('my-articles')}"
+                        id="myArticlesLink"
+                        href="#">
+              My articles
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <RouterLink :to="{name: 'my-profile'}"
+                        class="nav-link"
+                        :class="{'active': isActiveRoute('my-profile')}"
+                        id="myArticlesLink"
+                        href="#">
+              Profile
+            </RouterLink>
           </li>
           <li class="nav-item logout-item">
             <a class="nav-link" href="#" @click.prevent="showLogoutModal">Log out</a>

@@ -24,6 +24,10 @@ export class ArticleService {
 
   public async getRecentArticleSummaries(page: number) : Promise<ArticleSummary[]> {
     // TODO replace to real endpoint
+    if (page > 3) {
+      return [];
+    }
+
     const generateArticle = (id: number) => ({
       id: id,
       title: "Encore is an AI-powered search engine for your thrifting needs",
@@ -35,7 +39,7 @@ export class ArticleService {
 
     const array = <ArticleSummary[]>[];
     for (let i = 0;  i < 20; i++) {
-      array.push(generateArticle(i + 1))
+      array.push(generateArticle((page - 1) * 20 + (i + 1)))
     }
     return array;
   }

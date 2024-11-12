@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useUserStore } from '@/stores/UserStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,14 +29,26 @@ const router = createRouter({
     {
       path: '/my/articles',
       name: 'my-articles',
-      component: () => import("@/views/MyArticlesView.vue")
+      component: () => import("@/views/MyArticlesView.vue"),
+      beforeEnter: kickIfNotAuthorized
     },
     {
       path: '/my/profile',
       name: 'my-profile',
-      component: () => import("@/views/MyProfileView.vue")
+      component: () => import("@/views/MyProfileView.vue"),
+      beforeEnter: kickIfNotAuthorized
     }
   ],
 })
+
+function kickIfNotAuthorized(to: any, from: any, next: any) {
+  const userStorage = useUserStore();
+  if (userStorage.hasUser()) {
+    next();
+    return;
+  }
+
+  router.push({name: 'login'})
+}
 
 export default router

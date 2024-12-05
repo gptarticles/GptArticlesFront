@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useUserStore } from '@/stores/UserStore'
+import { useUserStore } from '@/store/UserStore'
 import { AuthService } from '@/service/AuthService'
 import {Tooltip} from "bootstrap";
 

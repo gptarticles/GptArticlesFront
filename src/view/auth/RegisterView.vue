@@ -3,7 +3,7 @@
 import { defineComponent } from 'vue'
 import { Tooltip } from 'bootstrap'
 import { AuthService } from '@/service/AuthService'
-import { useUserStore } from '@/stores/UserStore'
+import { useUserStore } from '@/store/UserStore'
 import type { UserRegisterData } from '@/dto/user/UserRegisterData'
 
 const authService = AuthService.getInstance()

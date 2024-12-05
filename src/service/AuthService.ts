@@ -1,6 +1,6 @@
 import type { UserRegisterData } from '@/dto/user/UserRegisterData'
 import type { User } from '@/dto/user/User'
-import { useUserStore } from '@/stores/UserStore'
+import { useUserStore } from '@/store/UserStore'
 
 export class AuthService {
   private static readonly instance = new AuthService();

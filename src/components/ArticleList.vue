@@ -3,6 +3,7 @@ import { defineComponent, type PropType } from 'vue'
 import ArticleListItem from '@/components/ArticleListItem.vue'
 import type { ArticleSummary } from '@/dto/article/ArticleSummary'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import type { ArticleType } from '@/type/ArticleType'
 
 type ArticleSummaryLoader = (page: number) => Promise<{summaries: ArticleSummary[], hasMore: boolean}>;
 
@@ -14,6 +15,10 @@ export default defineComponent({
     loadMore: {
       type: Object as PropType<ArticleSummaryLoader>,
       required: true
+    },
+    type: {
+      type: Object as PropType<ArticleType>,
+      default: "published"
     }
   },
 
@@ -47,7 +52,7 @@ export default defineComponent({
 
 <template>
   <div class="d-grid gap-3">
-    <ArticleListItem v-for="summary in summaries" :summary="summary" />
+    <ArticleListItem :type="type" v-for="summary in summaries" :summary="summary" />
     <p v-if="summaries.length == 0 && !isLoading">There is no any articles</p>
     <div class="d-flex justify-content-center mt-2">
       <LoadingSpinner v-if="isLoading" />

@@ -1,5 +1,5 @@
 import type { UserProfileInfo } from '@/dto/user/UserProfileInfo'
-import { useUserStore } from '@/stores/UserStore'
+import { useUserStore } from '@/store/UserStore'
 
 export class ProtectedProfileService {
   private static readonly instance = new ProtectedProfileService();

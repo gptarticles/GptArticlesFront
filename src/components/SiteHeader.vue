@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { useUserStore } from '@/stores/UserStore'
+import { useUserStore } from '@/store/UserStore'
 import { defineComponent } from 'vue'
 import AssuranceModal from '@/components/modal/AssuranceModal.vue'
 export default defineComponent({
@@ -87,6 +87,7 @@ export default defineComponent({
   <AssuranceModal title="Log out"
                   cancel-label="Cancel"
                   sure-label="Log out"
+                  :is-dangerous="true"
                   @assure="sureLogout"
                   v-model:showing="logoutModalShowing">
     <p>Would you really like to log out?</p>

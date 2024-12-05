@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import { useUserStore } from '@/stores/UserStore'
+import HomeView from '@/view/HomeView.vue'
+import { useUserStore } from '@/store/UserStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,29 +13,35 @@ const router = createRouter({
     {
       path: "/articles/:id",
       name: "article",
-      component: () => import("@/views/ArticleView.vue"),
+      component: () => import("@/view/ArticleView.vue"),
       props: true
     },
     {
       path: '/auth/login',
       name: 'login',
-      component: () => import("@/views/auth/LoginView.vue"),
+      component: () => import("@/view/auth/LoginView.vue"),
     },
     {
       path: '/auth/register',
       name: 'register',
-      component: () => import("@/views/auth/RegisterView.vue")
+      component: () => import("@/view/auth/RegisterView.vue")
     },
     {
       path: '/my/articles',
       name: 'my-articles',
-      component: () => import("@/views/MyArticlesView.vue"),
+      component: () => import("@/view/MyArticlesView.vue"),
+      beforeEnter: kickIfNotAuthorized
+    },
+    {
+      path: '/my/articles/create',
+      name: 'create-article',
+      component: () => import("@/view/CreateArticleView.vue"),
       beforeEnter: kickIfNotAuthorized
     },
     {
       path: '/my/profile',
       name: 'my-profile',
-      component: () => import("@/views/MyProfileView.vue"),
+      component: () => import("@/view/MyProfileView.vue"),
       beforeEnter: kickIfNotAuthorized
     }
   ],

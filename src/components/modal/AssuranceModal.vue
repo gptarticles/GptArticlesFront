@@ -19,6 +19,10 @@ export default defineComponent({
     cancelLabel: {
       type: String,
       required: true
+    },
+    isDangerous: {
+      type: Boolean,
+      required: false,
     }
   },
 
@@ -81,7 +85,8 @@ export default defineComponent({
           <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">
             {{ cancelLabel }}
           </button>
-          <button type="button" class="btn btn-danger" @click="onAssure">{{ sureLabel }}</button>
+          <button v-if="!isDangerous" type="button" class="btn btn-dark" @click="onAssure">{{ sureLabel }}</button>
+          <button v-else type="button" class="btn btn-danger" @click="onAssure">{{ sureLabel }}</button>
         </div>
       </div>
     </div>
